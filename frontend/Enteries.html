@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entries</title>
+</head>
+<body>
+    <navbar>
+        <ul>
+          <li><a href="index.html">Form</a></li>
+          <li> <a href="Enteries.html"> Entries</a></li>
+        </ul>
+        <div class="entries"><div>
+            <h3 class="name">Rajesh Jha</h3>
+            <h3 class="DOB">02 July 2001</h3>
+            <h3 class="country">India</h3>
+            <button onclick="location.href='Rajesh Jha CV.pdf';">Download Resume</button>
+            <button>Delete Entry</button>
+        </div></div>
+        
+    <script>
+                var entries = [
+            {
+                name: 'RAjesh',
+                dob: 'asdf',
+                country: 'asdfas',
+                id: 2
+            },
+            {
+                name: 'varun',
+                dob: 'asdf',
+                country: 'asdfas',
+                id: 2
+            },{
+                name: 'harsh',
+                dob: 'asdf',
+                country: 'asdfas',
+                id: 2
+            }
+        ]
+
+        window.onload = async function () {
+            // try {
+            //     const res = await fetch('/entries');
+            //     const data = await res.json();
+            //     displayEntries(data);
+            // } catch (error) {
+            //     console.log(error)
+            // }
+            displayEntries(entries)
+        }
+
+        function displayEntries(data) {
+            console.log(entries)
+
+            let html = ``;
+            data.forEach(entry => {
+                html += `<div>
+            <h3 class="name">${entry.name}</h3>
+            <h3 class="DOB">${entry.dob}</h3>
+            <h3 class="country">${entry.country}</h3>
+            <button onclick="location.href='Rajesh Jha CV.pdf';">Download Resume</button>
+            <button onclick="deleteEntry(${entry.id})">Delete Entry</button>
+        </div>`
+            })
+
+            const div = document.querySelector('.entries');
+
+            div.innerHTML = html;
+
+            
+        }
+    </script>
+</body>
+</html>
