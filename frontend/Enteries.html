@@ -13,61 +13,47 @@
           <li> <a href="Enteries.html"> Entries</a></li>
         </ul>
         <div class="entries"><div>
-            <h3 class="name">Rajesh Jha</h3>
-            <h3 class="DOB">02 July 2001</h3>
-            <h3 class="country">India</h3>
-            <button onclick="location.href='Rajesh Jha CV.pdf';">Download Resume</button>
-            <button>Delete Entry</button>
-        </div></div>
         
     <script>
-                var entries = [
-            {
-                name: 'RAjesh',
-                dob: 'asdf',
-                country: 'asdfas',
-                id: 2
-            },
-            {
-                name: 'varun',
-                dob: 'asdf',
-                country: 'asdfas',
-                id: 2
-            },{
-                name: 'harsh',
-                dob: 'asdf',
-                country: 'asdfas',
-                id: 2
-            }
-        ]
+                
 
         window.onload = async function () {
-            // try {
-            //     const res = await fetch('/entries');
-            //     const data = await res.json();
-            //     displayEntries(data);
-            // } catch (error) {
-            //     console.log(error)
-            // }
-            displayEntries(entries)
+            try {
+                const res = await fetch('http://localhost:8080/user/users');
+                const data = await res.json();
+                displayEntries(data);
+            } catch (error) {
+                console.log(error)
+            }
+        }
+
+        async function deleteUser(id) {
+            console.log(id)
+            try {
+               const res = await fetch(`http://localhost:8080/user/delete/${id}`);
+            } catch (error) {
+                console.log(error)
+            }
         }
 
         function displayEntries(data) {
-            console.log(entries)
+            console.log(data)
 
             let html = ``;
             data.forEach(entry => {
                 html += `<div>
-            <h3 class="name">${entry.name}</h3>
+            <h3 class="name">${entry.username}</h3>
             <h3 class="DOB">${entry.dob}</h3>
             <h3 class="country">${entry.country}</h3>
-            <button onclick="location.href='Rajesh Jha CV.pdf';">Download Resume</button>
-            <button onclick="deleteEntry(${entry.id})">Delete Entry</button>
+            <button onclick="location.href='${entry.resume}';">Download Resume</button>
+            <button onclick="deleteUser(${entry.id})">Delete Entry</button>
         </div>`
             })
 
             const div = document.querySelector('.entries');
+            console.log(div)
 
+            console.log(html)
             div.innerHTML = html;
 
             

@@ -14,15 +14,18 @@
         <li> <a href="Enteries.html"> Entries</a></li>
       </ul>
     </navbar>
-    <form action="post">
+    <form action="http://localhost:8080/user/addUser" method="post" >
         <label for="name">Your Name</label>
-        <input type="text" >
+        <input name="name" type="text" >
         <br>
         <label for="date">Date of Birth</label>
-        <input type="date" value="2017-06-01" />
+        <input name="dob" type="date" value="2017-06-01" />
+        <br>
+        <label for="country">country</label>
+        <input name="country" type="text" value="India" />
         <br>
         <label for="resume">Resume</label>
-        <input type="file">
+        <input name="resume" type="file">
         <br>
         <button type="submit"> Submit</button>
     </form>
